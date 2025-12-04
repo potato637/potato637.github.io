@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘의 1분 지식</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧠 오늘의 1분 지식</h1>
+      <p class="subtitle">지적 호기심을 채우는 가장 빠른 방법</p>
+
+      <div class="input-group">
+        <input
+          type="text"
+          id="topicInput"
+          placeholder="알고 싶은 주제를 입력하세요 (예: 펭귄)"
+        />
+
+        <div class="preset-buttons">
+          <button
+            class="btn-chip"
+            id="preset-btn-1"
+            onclick="setTopicFromButton(1)"
+          >
+            ⚖️ 황당한 법
+          </button>
+          <button
+            class="btn-chip"
+            id="preset-btn-2"
+            onclick="setTopicFromButton(2)"
+          >
+            🌌 우주 미스터리
+          </button>
+          <button class="btn-chip" onclick="setRandomTopic()">
+            🎲 완전 랜덤
+          </button>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="fetchKnowledge()">
+        지식 염탐하기 🔍
+      </button>
+
+      <div id="loader" class="loader"></div>
+
+      <div id="result-area">
+        <div class="result-card">
+          <div class="result-title" id="res-title">
+            제목이 여기에 표시됩니다
+          </div>
+          <div class="result-content" id="res-content">
+            여기에 AI가 생성한 재미있는 지식 내용이 표시됩니다.
+          </div>
+          <div class="result-summary" id="res-summary">
+            📌 한 줄 요약: 여기에 요약이 표시됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,7 +1,8 @@
 // [JavaScript 핵심 요구 사항 구현]
 
 // 1. 서버 주소 상수 (백엔드 서버가 생기면 여기에 주소를 넣으세요)
-const SERVER_URL = "";
+const SERVER_URL =
+  "https://31ba73e4-7442-4f95-8a54-44935047ca48-00-25kw03c1iy09w.riker.replit.dev.repl.co/register";
 
 // 2. 랜덤 주제 리스트 (Broad Topics)
 const TOPIC_LIST = [

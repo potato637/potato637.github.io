@@ -188,6 +188,9 @@ async function fetchKnowledge() {
     }
 
     const data = await response.json();
+    console.log("[서버 응답 데이터]", data);
+    console.log("[응답 데이터 타입]", typeof data);
+    console.log("[응답 데이터 키]", Object.keys(data || {}));
     renderResult(data);
   } catch (error) {
     console.error("통신 에러 발생:", error);
@@ -213,12 +216,29 @@ function renderResult(data) {
   const loader = document.getElementById("loader");
   const resultArea = document.getElementById("result-area");
 
-  document.getElementById("res-title").innerText = data.title || "제목 없음";
-  document.getElementById("res-content").innerText =
-    data.content || "내용이 없습니다.";
-  document.getElementById("res-summary").innerText = `📌 한 줄 요약: ${
-    data.summary || "요약 없음"
-  }`;
+  // 서버 응답 구조에 맞게 데이터 추출 (다양한 가능한 필드명 지원)
+  const title = data?.title || data?.Title || data?.subject || "제목 없음";
+  const content =
+    data?.content ||
+    data?.Content ||
+    data?.body ||
+    data?.text ||
+    data?.message ||
+    "내용이 없습니다.";
+  const summary =
+    data?.summary ||
+    data?.Summary ||
+    data?.brief ||
+    data?.oneLineSummary ||
+    "요약 없음";
+
+  console.log("[렌더링 데이터]", { title, content, summary });
+
+  document.getElementById("res-title").innerText = title;
+  document.getElementById("res-content").innerText = content;
+  document.getElementById(
+    "res-summary"
+  ).innerText = `📌 한 줄 요약: ${summary}`;
 
   loader.style.display = "none";
   resultArea.style.display = "block";
